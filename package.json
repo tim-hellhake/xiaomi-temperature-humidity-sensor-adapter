@@ -1,0 +1,43 @@
+{
+  "name": "xiaomi-temperature-humidity-sensor-adapter",
+  "display_name": "Xiaomi Bluetooth Temperature and Humidity Sensor",
+  "version": "0.1.0",
+  "description": "Connect your Xiaomi Bluetooth Temperature and Humidity Sensor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tim-hellhake/xiaomi-temperature-humidity-sensor-adapter-adapter.git"
+  },
+  "author": "Tim Hellhake",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/tim-hellhake/xiaomi-temperature-humidity-sensor-adapter-adapter/issues"
+  },
+  "homepage": "https://github.com/tim-hellhake/xiaomi-temperature-humidity-sensor-adapter-adapter#readme",
+  "files": [
+    "LICENSE",
+    "SHA256SUMS",
+    "index.js",
+    "xiaomi-temperature-humidity-sensor-adapter.js"
+  ],
+  "moziot": {
+    "api": {
+      "min": 2,
+      "max": 2
+    },
+    "plugin": true,
+    "exec": "{nodeLoader} {path}"
+  },
+  "dependencies": {
+    "@abandonware/noble": "^1.9.2-2",
+    "xiaomi-gap-parser": "^1.0.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0"
+  }
+}
