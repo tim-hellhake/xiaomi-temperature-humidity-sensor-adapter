@@ -1,7 +1,7 @@
 {
   "name": "xiaomi-temperature-humidity-sensor-adapter",
   "display_name": "Xiaomi Bluetooth Temperature and Humidity Sensor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Connect your Xiaomi Bluetooth Temperature and Humidity Sensor",
   "main": "index.js",
   "scripts": {
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tim-hellhake/xiaomi-temperature-humidity-sensor-adapter-adapter.git"
+    "url": "git+https://github.com/tim-hellhake/xiaomi-temperature-humidity-sensor-adapter.git"
   },
   "author": "Tim Hellhake",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/tim-hellhake/xiaomi-temperature-humidity-sensor-adapter-adapter/issues"
+    "url": "https://github.com/tim-hellhake/xiaomi-temperature-humidity-sensor-adapter/issues"
   },
-  "homepage": "https://github.com/tim-hellhake/xiaomi-temperature-humidity-sensor-adapter-adapter#readme",
+  "homepage": "https://github.com/tim-hellhake/xiaomi-temperature-humidity-sensor-adapter#readme",
   "files": [
     "LICENSE",
     "SHA256SUMS",
