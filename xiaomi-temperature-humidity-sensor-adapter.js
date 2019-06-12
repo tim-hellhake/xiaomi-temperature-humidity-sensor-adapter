@@ -36,6 +36,17 @@ class TemperatureHumiditySensor extends Device {
       description: 'The ambient temperature',
       readOnly: true
     });
+
+    this.addProperty({
+      type: 'number',
+      minimum: 0,
+      maximum: 100,
+      multipleOf: 0.1,
+      unit: '%',
+      title: 'humidity',
+      description: 'The relative humidity',
+      readOnly: true
+    });
   }
 
   addProperty(description) {
@@ -46,12 +57,24 @@ class TemperatureHumiditySensor extends Device {
   setData(serviceData) {
     const result = readServiceData(serviceData.data);
 
-    if (result.event && result.event.data && result.event.data.tmp) {
-      const temperature = result.event.data.tmp;
-      console.log(`Got new temperature ${temperature}`);
-      const property = this.properties.get('temperature');
-      property.setCachedValue(temperature);
-      this.notifyPropertyChanged(property);
+    if (result.event && result.event.data) {
+      const data = result.event.data;
+
+      if (data.tmp) {
+        const temperature = result.event.data.tmp;
+        console.log(`Got new temperature ${temperature}`);
+        const property = this.properties.get('temperature');
+        property.setCachedValue(temperature);
+        this.notifyPropertyChanged(property);
+      }
+
+      if (data.hum) {
+        const humidity = result.event.data.hum;
+        console.log(`Got new humidity ${humidity}`);
+        const property = this.properties.get('humidity');
+        property.setCachedValue(humidity);
+        this.notifyPropertyChanged(property);
+      }
     }
   }
 }
