@@ -62,7 +62,6 @@ class TemperatureHumiditySensor extends Device {
 
       if (data.tmp) {
         const temperature = result.event.data.tmp;
-        console.log(`Got new temperature ${temperature}`);
         const property = this.properties.get('temperature');
         property.setCachedValue(temperature);
         this.notifyPropertyChanged(property);
@@ -70,7 +69,6 @@ class TemperatureHumiditySensor extends Device {
 
       if (data.hum) {
         const humidity = result.event.data.hum;
-        console.log(`Got new humidity ${humidity}`);
         const property = this.properties.get('humidity');
         property.setCachedValue(humidity);
         this.notifyPropertyChanged(property);
