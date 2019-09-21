@@ -33,11 +33,11 @@
     "exec": "{nodeLoader} {path}"
   },
   "dependencies": {
-    "@abandonware/noble": "^1.9.2-2",
+    "@abandonware/noble": "^1.9.2-5",
     "xiaomi-gap-parser": "^1.0.3"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0"
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.4.0"
   }
 }
