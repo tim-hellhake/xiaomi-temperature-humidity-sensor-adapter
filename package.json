@@ -22,7 +22,8 @@
     "LICENSE",
     "SHA256SUMS",
     "index.js",
-    "xiaomi-temperature-humidity-sensor-adapter.js"
+    "xiaomi-temperature-humidity-sensor-adapter.js",
+    "manifest.json"
   ],
   "moziot": {
     "api": {
