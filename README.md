@@ -8,6 +8,13 @@
 
 Connect your Xiaomi Bluetooth Temperature and Humidity Sensor.
 
-Configuration:
+## Known issues
+
+### Temperature and humidity are `0`
+The temperature and humidity values are sent periodically by the sensor.
+
+It may take some time until the first update arrives after adding the sensor or restarting the gateway.
+
+## Configuration:
 - Go to 'Add Thing'
 - A new sensor should appear
