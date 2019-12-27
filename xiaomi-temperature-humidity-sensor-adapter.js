@@ -120,7 +120,7 @@ class TemperatureHumiditySensorAdapter extends Adapter {
   startPairing() {
     console.log('Start pairing');
 
-    for (let id in this.knownDevices) {
+    for (const id in this.knownDevices) {
       const device = this.knownDevices[id];
       this.handleDeviceAdded(device);
     }
