@@ -63,15 +63,13 @@ class TemperatureHumiditySensor extends Device {
       if (data.tmp) {
         const temperature = result.event.data.tmp;
         const property = this.properties.get('temperature');
-        property.setCachedValue(temperature);
-        this.notifyPropertyChanged(property);
+        property.setCachedValueAndNotify(temperature);
       }
 
       if (data.hum) {
         const humidity = result.event.data.hum;
         const property = this.properties.get('humidity');
-        property.setCachedValue(humidity);
-        this.notifyPropertyChanged(property);
+        property.setCachedValueAndNotify(humidity);
       }
     }
   }
