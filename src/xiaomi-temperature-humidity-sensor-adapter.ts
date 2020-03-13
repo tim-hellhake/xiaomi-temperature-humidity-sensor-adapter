@@ -6,26 +6,24 @@
 
 'use strict';
 
-const noble = require('@abandonware/noble');
-const {
-  readServiceData
-} = require('xiaomi-gap-parser');
+import { Adapter, Device, Property } from 'gateway-addon';
 
-const {
-  Adapter,
-  Device,
-  Property
-} = require('gateway-addon');
+import noble from '@abandonware/noble';
 
-class TemperatureHumiditySensor extends Device {
-  constructor(adapter, manifest, id) {
+import { readServiceData } from 'xiaomi-gap-parser';
+
+export class TemperatureHumiditySensor extends Device {
+  private temperatureProperty: Property;
+  private humidityProperty: Property;
+
+  constructor(adapter: Adapter, manifest: any, id: string) {
     super(adapter, `${manifest.display_name}-${id}`);
     this['@context'] = 'https://iot.mozilla.org/schemas/';
     this['@type'] = ['TemperatureSensor'];
     this.name = manifest.display_name;
     this.description = manifest.description;
 
-    this.addProperty({
+    this.temperatureProperty = new Property(this, 'temperature', {
       type: 'number',
       '@type': 'TemperatureProperty',
       minimum: -127.99,
@@ -37,7 +35,9 @@ class TemperatureHumiditySensor extends Device {
       readOnly: true
     });
 
-    this.addProperty({
+    this.properties.set('temperature', this.temperatureProperty);
+
+    this.humidityProperty = new Property(this, 'humidity', {
       type: 'number',
       minimum: 0,
       maximum: 100,
@@ -47,14 +47,11 @@ class TemperatureHumiditySensor extends Device {
       description: 'The relative humidity',
       readOnly: true
     });
+
+    this.properties.set('humidity', this.humidityProperty);
   }
 
-  addProperty(description) {
-    const property = new Property(this, description.title, description);
-    this.properties.set(description.title, property);
-  }
-
-  setData(serviceData) {
+  setData(serviceData: { uuid: string, data: Buffer }) {
     const result = readServiceData(serviceData.data);
 
     if (result.event && result.event.data) {
@@ -62,24 +59,22 @@ class TemperatureHumiditySensor extends Device {
 
       if (data.tmp) {
         const temperature = result.event.data.tmp;
-        const property = this.properties.get('temperature');
-        property.setCachedValueAndNotify(temperature);
+        this.temperatureProperty.setCachedValueAndNotify(temperature);
       }
 
       if (data.hum) {
         const humidity = result.event.data.hum;
-        const property = this.properties.get('humidity');
-        property.setCachedValueAndNotify(humidity);
+        this.humidityProperty.setCachedValueAndNotify(humidity);
       }
     }
   }
 }
 
-class TemperatureHumiditySensorAdapter extends Adapter {
-  constructor(addonManager, manifest) {
+export class TemperatureHumiditySensorAdapter extends Adapter {
+  private knownDevices: { [key: string]: TemperatureHumiditySensor } = {};
+
+  constructor(addonManager: any, manifest: any) {
     super(addonManager, TemperatureHumiditySensorAdapter.name, manifest.name);
-    this.pollInterval = manifest.moziot.config.pollInterval;
-    this.knownDevices = {};
     addonManager.addAdapter(this);
 
     noble.on('stateChange', (state) => {
@@ -128,5 +123,3 @@ class TemperatureHumiditySensorAdapter extends Adapter {
     console.log('Cancel pairing');
   }
 }
-
-module.exports = TemperatureHumiditySensorAdapter;
