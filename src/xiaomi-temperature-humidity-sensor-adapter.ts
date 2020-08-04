@@ -19,7 +19,7 @@ export class TemperatureHumiditySensor extends Device {
   constructor(adapter: Adapter, manifest: any, id: string) {
     super(adapter, `${manifest.display_name}-${id}`);
     this['@context'] = 'https://iot.mozilla.org/schemas/';
-    this['@type'] = ['TemperatureSensor'];
+    this['@type'] = ['TemperatureSensor', 'HumiditySensor'];
     this.name = manifest.display_name;
     this.description = manifest.description;
 
@@ -39,6 +39,7 @@ export class TemperatureHumiditySensor extends Device {
 
     this.humidityProperty = new Property(this, 'humidity', {
       type: 'number',
+      '@type': 'HumidityProperty',
       minimum: 0,
       maximum: 100,
       multipleOf: 0.1,
