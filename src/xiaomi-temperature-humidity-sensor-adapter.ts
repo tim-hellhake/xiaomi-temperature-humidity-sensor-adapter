@@ -30,7 +30,7 @@ export class TemperatureHumiditySensor extends Device {
       maximum: 127.99,
       multipleOf: 0.1,
       unit: 'degree celsius',
-      title: 'temperature',
+      title: 'Temperature',
       description: 'The ambient temperature',
       readOnly: true
     });
@@ -44,7 +44,7 @@ export class TemperatureHumiditySensor extends Device {
       maximum: 100,
       multipleOf: 0.1,
       unit: '%',
-      title: 'humidity',
+      title: 'Humidity',
       description: 'The relative humidity',
       readOnly: true
     });
