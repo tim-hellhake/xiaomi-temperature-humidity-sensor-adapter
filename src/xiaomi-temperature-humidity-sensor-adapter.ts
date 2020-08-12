@@ -98,7 +98,6 @@ export class TemperatureHumiditySensorAdapter extends Adapter {
           let knownDevice = this.knownDevices[id];
 
           if (!knownDevice) {
-            // eslint-disable-next-line max-len
             console.log(`Detected new Temperature Humidity Sensor with id ${id}`);
             knownDevice = new TemperatureHumiditySensor(this, manifest, id);
             this.handleDeviceAdded(knownDevice);
