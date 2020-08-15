@@ -96,9 +96,10 @@ export class TemperatureHumiditySensorAdapter extends Adapter {
         if (serviceData.uuid == 'fe95') {
           const id = peripheral.id;
           let knownDevice = this.knownDevices[id];
+          const data = readServiceData(serviceData.data);
 
           if (!knownDevice) {
-            console.log(`Detected new Temperature Humidity Sensor with id ${id}`);
+            console.log(`Detected new Temperature Humidity Sensor with id ${id}: ${JSON.stringify(data)}`);
             knownDevice = new TemperatureHumiditySensor(this, manifest, id);
             this.handleDeviceAdded(knownDevice);
             this.knownDevices[id] = knownDevice;
