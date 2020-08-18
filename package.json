@@ -25,14 +25,6 @@
     "lib/xiaomi-temperature-humidity-sensor-adapter.js",
     "manifest.json"
   ],
-  "moziot": {
-    "api": {
-      "min": 2,
-      "max": 2
-    },
-    "plugin": true,
-    "exec": "{nodeLoader} {path}"
-  },
   "dependencies": {
     "@abandonware/noble": "^1.9.2-5",
     "xiaomi-gap-parser": "^1.0.3"
