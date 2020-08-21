@@ -12,7 +12,7 @@ import noble from '@abandonware/noble';
 
 import { readServiceData } from 'xiaomi-gap-parser';
 
-export class TemperatureHumiditySensor extends Device {
+class TemperatureHumiditySensor extends Device {
   private temperatureProperty: Property;
   private humidityProperty: Property;
 
