@@ -98,14 +98,16 @@ export class TemperatureHumiditySensorAdapter extends Adapter {
           let knownDevice = this.knownDevices[id];
           const data = readServiceData(serviceData.data);
 
-          if (!knownDevice) {
-            console.log(`Detected new Temperature Humidity Sensor with id ${id}: ${JSON.stringify(data)}`);
-            knownDevice = new TemperatureHumiditySensor(this, manifest, id);
-            this.handleDeviceAdded(knownDevice);
-            this.knownDevices[id] = knownDevice;
-          }
+          if (data.frameControl.indexOf('EVENT_INCLUDE') > 0) {
+            if (!knownDevice) {
+              console.log(`Detected new Temperature Humidity Sensor with id ${id}: ${JSON.stringify(data)}`);
+              knownDevice = new TemperatureHumiditySensor(this, manifest, id);
+              this.handleDeviceAdded(knownDevice);
+              this.knownDevices[id] = knownDevice;
+            }
 
-          knownDevice.setData(serviceData);
+            knownDevice.setData(serviceData);
+          }
         }
       }
     });

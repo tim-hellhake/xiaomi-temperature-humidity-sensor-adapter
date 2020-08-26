@@ -8,6 +8,7 @@ declare module 'xiaomi-gap-parser' {
     function readServiceData(buffer: Buffer): Result;
 
     interface Result {
+        frameControl: string[]
         event: Event
     }
 
