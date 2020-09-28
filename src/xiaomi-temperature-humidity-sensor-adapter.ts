@@ -76,7 +76,12 @@ const EXTRACTORS: { [key: string]: (characteristic: Characteristic) => Promise<{
     return new Promise((resolve, reject) => {
       try {
         console.log(`Reading battery characteristic`);
-        characteristic.read((_, data) => {
+        characteristic.read((error, data) => {
+          if(error) {
+            reject(error);
+            return;
+          }
+
           const battery = data.readInt8(0);
           resolve({ battery });
         });
