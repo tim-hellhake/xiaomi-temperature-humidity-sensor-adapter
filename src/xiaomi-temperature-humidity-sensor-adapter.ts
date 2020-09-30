@@ -186,11 +186,19 @@ export class TemperatureHumiditySensorAdapter extends Adapter {
     super(addonManager, TemperatureHumiditySensorAdapter.name, manifest.name);
     addonManager.addAdapter(this);
 
+    const {
+      pollInterval
+    } = manifest.moziot.config;
+
+    const pollIntervalMs = (pollInterval || 5) * 60 * 1000;
+
+    console.log(pollIntervalMs);
+
     setInterval(async () => {
       for (const device of Object.values(this.encryptedKnownDevices)) {
         await device.poll();
       }
-    }, 60000)
+    }, pollIntervalMs)
 
     noble.on('stateChange', (state) => {
       console.log('Noble adapter is %s', state);

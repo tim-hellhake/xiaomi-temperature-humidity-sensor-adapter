@@ -20,7 +20,12 @@
         "schema": {
             "type": "object",
             "required": [],
-            "properties": {}
+            "properties": {
+                "pollInterval": {
+                    "title": "The poll interval in minutes",
+                    "type": "integer"
+                }
+            }
         }
     }
 }
