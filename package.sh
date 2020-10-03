@@ -1,5 +1,10 @@
 #!/bin/bash -e
 
+# Setup environment for building inside Dockerized toolchain
+export NVM_DIR="${HOME}/.nvm"
+[ -s "${NVM_DIR}/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"
+[ $(id -u) = 0 ] && umask 0
+
 npm ci
 npm run build
 rm -rf node_modules
@@ -15,6 +20,7 @@ npm ci --production
 
 shasum --algorithm 256 manifest.json package.json lib/*.js LICENSE README.md > SHA256SUMS
 
+rm -rf node_modules/.bin
 find node_modules \( -type f -o -type l \) -exec shasum --algorithm 256 {} \; >> SHA256SUMS
 
 TARFILE=`npm pack`
