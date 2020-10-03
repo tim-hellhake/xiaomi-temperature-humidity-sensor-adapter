@@ -2,7 +2,7 @@
     "id": "xiaomi-temperature-humidity-sensor-adapter",
     "short_name": "Xiaomi Temp",
     "name": "Xiaomi Bluetooth Temperature and Humidity Sensor",
-    "version": "0.1.7",
+    "version": "0.2.0",
     "author": "Tim Hellhake",
     "description": "Connect your Xiaomi Bluetooth Temperature and Humidity Sensor",
     "homepage_url": "https://github.com/tim-hellhake/xiaomi-temperature-humidity-sensor-adapter#readme",
