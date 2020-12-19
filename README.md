@@ -10,6 +10,9 @@ Connect your Xiaomi Bluetooth Temperature and Humidity Sensor.
 
 ## Known issues
 
+### Linux
+If you are not using the official gateway image you may need to follow these [instructions](https://github.com/noble/noble#running-on-linux).
+
 ### Temperature and humidity are `0`
 The temperature and humidity values are sent periodically by the sensor.
 
