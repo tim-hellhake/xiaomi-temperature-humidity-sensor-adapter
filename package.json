@@ -1,7 +1,7 @@
 {
   "name": "xiaomi-temperature-humidity-sensor-adapter",
   "display_name": "Xiaomi Bluetooth Temperature and Humidity Sensor",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Connect your Xiaomi Bluetooth Temperature and Humidity Sensor",
   "main": "lib/index.js",
   "scripts": {
